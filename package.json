@@ -1,0 +1,9 @@
+{
+  "name": "NodeMUD",
+  "version": "0.0.1",
+  "description": "Node text MMORPG",
+  "dependencies": {
+    "express": "^4.14.0",
+    "socket.io": "1.2.0"
+  }
+}
