@@ -1,9 +1,27 @@
 {
-  "name": "NodeMUD",
+  "name": "node-mud",
   "version": "0.0.1",
   "description": "Node text MMORPG",
   "dependencies": {
     "express": "^4.14.0",
     "socket.io": "1.2.0"
-  }
+  },
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/R9KProg/NodeMUD.git"
+  },
+  "keywords": [
+    "MUD"
+  ],
+  "author": "Quaker's Oat",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/R9KProg/NodeMUD/issues"
+  },
+  "homepage": "https://github.com/R9KProg/NodeMUD#readme"
 }
