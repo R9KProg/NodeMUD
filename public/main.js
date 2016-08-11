@@ -19,12 +19,15 @@ $('textarea').on({
     keypress: function(e){
         if(e.which == 13) {
         	e.preventDefault();
+            
+            $('#messages').append('<p>' + $('#message').val() + '</p><br/>'); 
+
             var say = $('#message').val().replace(/^(say) (.*)/, '$2');
             if (say != $('#message').val()) {
                 socket.emit('chat message', say);
             }
             else if ($('#message').val() == "clear") {
-                document.getElementById("messages").innerHTML = '';
+                $('#messages').empty();
             }
             else if ($('#message').val() == "help") {
                 $('#messages').append("<p>List of available commands:<br/>help - This command.<br/>say - Global chat. Usage: say something about something<br/>clear - Clear all messages.</p><br/>");
