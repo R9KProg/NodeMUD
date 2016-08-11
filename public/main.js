@@ -18,7 +18,7 @@ $('textarea').on({
     },
     keypress: function(e){
         if(e.which == 13) {
-        	e.preventDefault();
+            e.preventDefault();
             
             $('#messages').append('<p>' + $('#message').val() + '</p><br/>'); 
 
