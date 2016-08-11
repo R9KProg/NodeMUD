@@ -38,26 +38,6 @@ $('textarea').on({
     }
 });
 
-/*
-$('form').submit(function () {
-    var say = $('#message').val().replace(/^(say) (.*)/, '$2')
-    if (say != $('#message').val()) {
-        socket.emit('chat message', say);
-    }
-    else if ($('#message').val() == "clear") {
-        document.getElementById("messages").innerHTML = '';
-    }
-    else if ($('#message').val() == "help") {
-        $('#messages').append("<p>List of available commands:<br/>help - This command.<br/>say - Global chat. Usage: say something about something<br/>clear - Clear all messages.</p><br/>");
-    }
-    else {
-        $('#messages').append("<p>Invalid command. Type \"help\" for a list of available commands.</p><br/>");
-    }
-    $('#message').val('');
-    return false;
-});
-*/
- 
 socket.on('message', function (msg) { 
     $('#messages').append('<p>' + msg + '</p><br/>');
 });
