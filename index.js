@@ -2,17 +2,29 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var comm = require('./server/commands.js');
 
-app.use(express.static('public'));
+app.use(express.static('client'));
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
 io.on('connection', function(socket){
-    io.to(socket.id).emit('message', "Connection successful.");
-  socket.on('chat message', function(msg){
-    io.emit('message', "[Chat] " + msg);
+  io.to(socket.id).emit('message', "Connection successful.");
+  socket.on('m', function(msg) {
+    var parsed = comm.parseComm(msg);
+    if (parsed['type'] !== null) {
+      if (parsed['type'] == 'global') {
+        io.emit('message', parsed['reply']);
+      }
+      else if (parsed['type'] == 'client') {
+        io.to(socket.id).emit('message', parsed['reply']);
+      }
+    }
+    if (parsed['action'] !== null) {
+      parsed['action'];
+    }
   });
 });
 
