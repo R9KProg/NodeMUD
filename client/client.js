@@ -24,8 +24,12 @@ $('textarea').on({
     $('#messages').append('<p>' + $('#message').val() + '</p><br/>');
 
     // Submit to server.
-    socket.emit('m', $('#message').val());
-
+    if ($('#message').val() == 'clear') {
+      $('#messages').empty();
+    }
+    else {
+      socket.emit('m', $('#message').val());
+    }
     // Clear input.
     $('#message').val('');
     }

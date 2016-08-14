@@ -11,19 +11,25 @@ app.get('/', function(req, res){
 });
 
 io.on('connection', function(socket){
-  io.to(socket.id).emit('message', "Connection successful.");
+  var client = socket.id;
+  io.to(client).emit('message', "Connection successful.");
   socket.on('m', function(msg) {
     var parsed = comm.parseComm(msg);
-    if (parsed['type'] !== null) {
+    if (parsed['data'] != null) {
+      var data = parsed['data'];
+    }
+    if (parsed['type'] != null) {
       if (parsed['type'] == 'global') {
         io.emit('message', parsed['reply']);
       }
       else if (parsed['type'] == 'client') {
-        io.to(socket.id).emit('message', parsed['reply']);
+        io.to(client).emit('message', parsed['reply']);
       }
     }
-    if (parsed['action'] !== null) {
-      parsed['action'];
+    if (parsed['action'] != null) {
+      eval("var action = " + parsed['action'].toString());
+      delete(parsed['action']);
+      action();
     }
   });
 });
