@@ -39,20 +39,24 @@ function parseComm(msg) {
 
   help['data'] = commands;
   
-  var c = eval(msg.replace(/^([a-zA-Z]*) ?(.*)/i, '$1'));
-  var re = {};
-
-  if (c['data'] != '') {
-  re.data = c['data'];
+  try {
+    var c = eval(msg.replace(/^([a-zA-Z]*) ?(.*)/i, '$1'));
+    var re = {};
+    if (c['data'] != '') {
+      re.data = c['data'];
+    }
+    if (c['action'] != '') {
+      re.action = c['action'];
+    } 
+    if (c['type'] != '') {
+      re.type = c['type'];
+      re.reply = c['reply'];
+    }
+    return re;
   }
-  if (c['action'] != '') {
-    re.action = c['action'];
-  } 
-  if (c['type'] != '') {
-    re.type = c['type'];
-    re.reply = c['reply'];
+  catch(err) {
+    return {type: 'client', reply: 'Invalid command. Type \"help\" for a list of all commands.'};
   }
-  return re;
 }
 
 module.exports.parseComm = parseComm;
