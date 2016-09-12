@@ -4,7 +4,7 @@
 This project is an attempt to redesign the classic MUD-style computer game around modern technologies.
 In place of a telnet client is your web browser. In place of a C based server is Node.JS, hence the name.
 
-In addition, it should be noted that this is a learning project for me. It is my first Node project, my first project involving any sort of network programming, albeit not anything to tricky, and my first attempt at making anything with extensibility in mind.
+In addition, it should be noted that this is a learning project for me. It is my first Node project, my first project involving any sort of network programming, albeit not anything too tricky, and my first attempt at making anything with extensibility in mind.
 
 Indeed, extensibility is my number 1 concern with this project. I plan not to have any actual levels, maps, npcs etc in this repo. Instead, this repo will be solely the game engine, and another repo will contain the game content once I have created that.
 
